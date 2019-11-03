@@ -1,0 +1,38 @@
+<html>
+ <head>
+  <title>HTML Form</title>
+  <script>
+	function submitForm() {
+		const nameElement = document.getElementById('nameId');
+		console.log('user name is ', nameElement.value);
+		
+		const hobbiesElements = document.getElementsByName('hobbyName');
+		for(let i = 0; i < hobbiesElements.length; i++) {
+			const hobbyElement = hobbiesElements[i];
+			//if(hobbyElement.checked) {
+				console.log(hobbyElement.value);
+			//}
+		}
+		const favSubElements = document.getElementsByName('favSub');
+		for(let i = 0; i < favSubElements.length; i++) {
+			const favSubElem = favSubElements[i];
+			if(favSubElem.checked) {
+				console.log(favSubElem.value);
+			}
+		}
+		
+		const chooseClass = document.getElementById("chooseClass");
+		console.log(chooseClass.value);
+		
+	}
+  </script>
+ </head>
+ <body>
+  Name: <input type="text" id="nameId"/><br/>
+  Hobbies: <input type="text" name="hobbyName"/> &nbsp; <input type="text" name="hobbyName"/> &nbsp; <input type="text" name="hobbyName"/><br/>
+  Favorite Subjects: Maths<input type="checkbox" name="favSub" value="m"/> &nbsp; History<input type="checkbox" name="favSub" value="h"/> &nbsp;Programming<input type="checkbox" name="favSub" value="p"/><br/>
+  Select class: <select id="chooseClass"><option value="we">Web Engineering</option><option value="me">Mobile Engineering</option></select>
+  <button onclick="submitForm()">Submit</button>
+ </body>
+
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Understanding DOM</title>
+        <script>
+            function SubmitForm() {
+               const nameElement = document.getElementById("nameId");
+               nameElement.value = "Asad";
+
+               const hobbyElement = document.getElementsByName("hobbiesName");
+               for(let i = 0; i < hobbyElement.length; i++) {
+                const hobbyElem = hobbyElement[i];
+                if(hobbyElem.checked) {
+                    console.log(hobbyElem.value);
+                }
+               }
+
+               const selectElement = document.getElementById("programmingSelect");
+               console.log(selectElement.value);
+
+            }
+        </script>
+    </head>
+    <body>
+        Name: <input type="text" id="nameId" value="A"/>
+        
+        <br/><br/>
+
+        Hobbies:
+        Reading: <input type="checkbox" name="hobbiesName" value="r"/><br/>
+        Gaming: <input type="checkbox" name="hobbiesName" value="g"/><br/>
+        Programming: <input type="checkbox" name="hobbiesName" value="p"/><br/>
+
+
+        <br/><br/>
+        Your Best PRogramming Language:<br/>
+        <select id="programmingSelect">
+            <option value="">Please choose any language</option>
+            <option value="Java">Java</option>
+            <option value="JavaScript">Java Script</option>
+            <option value="Kotlin">Android</option>
+        </select>
+
+        <button onclick="SubmitForm()">Submit</button>
+    </body>
+</html>

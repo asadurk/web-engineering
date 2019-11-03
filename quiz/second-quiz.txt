@@ -1,0 +1,22 @@
+Q#1) Consdier you have following code snippet. Descripe step by step how javascript engine
+works internally
+
+function print() {
+	print1();
+	print2();
+	print3();
+}
+
+function print1() {
+	console.log(1);
+}
+
+function print2() {
+	console.log(2);
+}
+
+function print3() {
+	console.log(3);
+}
+
+print();

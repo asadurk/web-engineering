@@ -1,0 +1,16 @@
+1. Difference between undefined and null
+2. Which of the following will take precendence using css
+	a) p {....}
+	b) body p {....}
+	
+	<body>
+		<p>
+		</p>
+	</body>
+3.  How to give style of direct first child of div(class="main-div") without using class?
+	<div class="main-div">
+	 <p></p>
+	 <div>
+		<span></span>
+	 </div>
+	</div>
