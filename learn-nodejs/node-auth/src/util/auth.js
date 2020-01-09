@@ -18,7 +18,7 @@ export const signup = async (req, res) => {
 }
 
 export const newToken = user => {
-    return jwt.sign({id:user.id}, envConfig.jwt, {expiresIn:"3d"} );
+    return jwt.sign({id:user.id}, envConfig.jwt, {expiresIn:"1d"} );
 }
 
 export const signin = async (req, res) => {

@@ -72,7 +72,7 @@
 
 <script>
 	window.onload = function() {
-		fetch('/getAllTodos', {method: 'get'})
+		fetch('/todo/getAllTodos', {method: 'get'})
 			.then(res => res.json())
 			.then(res => addInitialTodos(res));
 	}
@@ -90,7 +90,7 @@
 		if(todo.length == 0) {
 			alert("Please enter your todo item");
 		} else {
-			fetch('/addTodos', {
+			fetch('/todo/addTodos', {
 				method: 'POST',
 				headers: {
 				'Content-Type': 'application/json'
@@ -134,10 +134,11 @@
 	const deleteFunc = function() {
 		console.log('test delete function');
 		const li = this.parentElement.parentElement;
-		fetch('/deleteTodo/' + li.id, {
+		fetch('/todo/deleteTodo/' + li.id, {
 			method: 'DELETE',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization'
 			}
 		})
 		.then(res => res.json())
