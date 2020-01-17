@@ -8,6 +8,7 @@ export const signup = async (req, res) => {
     if(!req.body.email || !req.body.password) {
         res.status(400).send({message: 'need email and password'});
     }
+    console.log(req.body);
     try {
         const user = await User.create(req.body);
         const token = newToken(user);
@@ -45,10 +46,14 @@ export const signin = async (req, res) => {
 }
 
 export const protect = async (req, res, next) => {
-    const bearer = req.headers.authorization;
+    
+    let bearer = req.headers.authorization;
     console.log('1');
     if (!bearer || !bearer.startsWith('Bearer ')) {
-        return res.status(401).end()
+        bearer = req.cookies.token;
+        if (!bearer || !bearer.startsWith('Bearer ')) {
+            return res.status(401).end()
+        }
       }
     
     const token = bearer.split('Bearer ')[1].trim()

@@ -72,7 +72,13 @@
 
 <script>
 	window.onload = function() {
-		fetch('/todo/getAllTodos', {method: 'get'})
+		fetch('/todo/getAllTodos', {
+			method: 'get',
+			header: {
+				'Content-Type': 'application/json',
+				'Authorization': getCookieValue("token")
+			}
+		})
 			.then(res => res.json())
 			.then(res => addInitialTodos(res));
 	}
@@ -84,6 +90,17 @@
 
 	}
 
+	function getCookieValue(name) 
+	{
+		var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+		if (match) {
+			return match[2];
+		}
+		else{
+			console.log('--something went wrong---');
+		}
+	}
+
 	function addItem() {
 		const todoItem = document.getElementById('todoItem');
 		const todo = todoItem.value;
@@ -93,7 +110,8 @@
 			fetch('/todo/addTodos', {
 				method: 'POST',
 				headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': getCookieValue("token")
 				},
 				body: JSON.stringify({todo}) 
 			})
@@ -138,7 +156,7 @@
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization'
+				'Authorization': getCookieValue("token")
 			}
 		})
 		.then(res => res.json())

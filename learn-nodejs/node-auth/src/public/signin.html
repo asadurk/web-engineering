@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Signin</title>
+        <script>
+            function signmeIn() {
+            fetch('/signin', {
+                headers: {
+				'Content-Type': 'application/json'
+				},
+                body: JSON.stringify({"email": document.getElementById("email").value,
+            "password": document.getElementById("password").value}) ,
+                'method':'POST',
+                
+            }).then(res => res.json())
+            .then(res => {
+                document.cookie = "token=Bearer " + res.token;
+                window.location.href ="/todo";
+            }); 
+        }
+            
+            function getCookieValue(name) 
+            {
+                var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                if (match) {
+                    return match[2];
+                }
+                else{
+                    console.log('--something went wrong---');
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        Email: <input type="text" name="email" id="email" value="abc@abc.com"/> <br />
+        Password: <input type="password" name="password" id="password" value="123456"/>
+        <input type="button" onclick="signmeIn()"/>
+    </body>
+    
+</html>
